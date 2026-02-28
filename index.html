@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLUELANTERNDAO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-gray-950 text-white font-sans">  <!-- NAVBAR -->  <header class="fixed top-0 w-full bg-gray-900/80 backdrop-blur border-b border-blue-500/20 z-50">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-xl font-bold text-blue-400">BLUELANTERNDAO</h1>
+      <div class="space-x-4 text-sm">
+        <a href="#home" class="hover:text-blue-400">Home</a>
+        <a href="#about" class="hover:text-blue-400">About</a>
+        <a href="#posts" class="hover:text-blue-400">Posts</a>
+        <a href="#gallery" class="hover:text-blue-400">Gallery</a>
+        <a href="#services" class="hover:text-blue-400">Services</a>
+        <a href="#contact" class="hover:text-blue-400">Contact</a>
+        <a href="#links" class="hover:text-blue-400">Links</a>
+      </div>
+    </nav>
+  </header>  <!-- HERO -->  <section id="home" class="min-h-screen flex items-center justify-center text-center px-4">
+    <div>
+      <h2 class="text-4xl md:text-6xl font-bold text-blue-400 mb-4">Welcome to BLUELANTERNDAO</h2>
+      <p class="text-gray-300 max-w-xl mx-auto">A modern crypto-focused community showcasing creativity, innovation, and decentralized collaboration.</p>
+      <a href="#about" class="mt-6 inline-block bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-2xl shadow-lg">Explore</a>
+    </div>
+  </section>  <!-- ABOUT -->  <section id="about" class="max-w-5xl mx-auto py-20 px-4">
+    <h2 class="text-3xl font-bold text-blue-400 mb-6">About</h2>
+    <p class="text-gray-300">BLUELANTERNDAO is a community-driven platform built to showcase digital creations, grow a decentralized network, and connect creators with opportunities.</p>
+  </section>  <!-- POSTS -->  <section id="posts" class="bg-gray-900 py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-blue-400 mb-6">Posts / Blog</h2>
+      <div id="postContainer" class="grid md:grid-cols-2 gap-6"></div>
+      <div class="mt-8">
+        <input id="postTitle" placeholder="Post title" class="w-full mb-2 p-2 rounded bg-gray-800" />
+        <textarea id="postContent" placeholder="Write post..." class="w-full mb-2 p-2 rounded bg-gray-800"></textarea>
+        <button onclick="addPost()" class="bg-blue-500 px-4 py-2 rounded">Add Post</button>
+      </div>
+    </div>
+  </section>  <!-- GALLERY -->  <section id="gallery" class="max-w-6xl mx-auto py-20 px-4">
+    <h2 class="text-3xl font-bold text-blue-400 mb-6">Gallery</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-gray-800 h-40 rounded-2xl"></div>
+      <div class="bg-gray-800 h-40 rounded-2xl"></div>
+      <div class="bg-gray-800 h-40 rounded-2xl"></div>
+      <div class="bg-gray-800 h-40 rounded-2xl"></div>
+    </div>
+  </section>  <!-- SERVICES -->  <section id="services" class="bg-gray-900 py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-blue-400 mb-6">Services</h2>
+      <ul class="space-y-3 text-gray-300">
+        <li>• Website Creation</li>
+        <li>• Graphic & Meme Design</li>
+        <li>• Community Growth Strategy</li>
+        <li>• Crypto Branding</li>
+      </ul>
+    </div>
+  </section>  <!-- CONTACT -->  <section id="contact" class="max-w-5xl mx-auto py-20 px-4">
+    <h2 class="text-3xl font-bold text-blue-400 mb-6">Contact</h2>
+    <form class="space-y-4" onsubmit="sendMessage(event)">
+      <input required placeholder="Your Name" class="w-full p-2 rounded bg-gray-800" />
+      <input required type="email" placeholder="Your Email" class="w-full p-2 rounded bg-gray-800" />
+      <textarea required placeholder="Your Message" class="w-full p-2 rounded bg-gray-800"></textarea>
+      <button class="bg-blue-500 px-6 py-2 rounded">Send Message</button>
+    </form>
+  </section>  <!-- LINKS -->  <section id="links" class="bg-gray-900 py-20 px-4 text-center">
+    <h2 class="text-3xl font-bold text-blue-400 mb-6">Community Links</h2>
+    <div class="space-y-3">
+      <a href="#" class="block text-blue-300 hover:text-blue-500">X (Twitter)</a>
+      <a href="#" class="block text-blue-300 hover:text-blue-500">Discord</a>
+      <a href="#" class="block text-blue-300 hover:text-blue-500">Telegram</a>
+    </div>
+  </section>  <!-- FOOTER -->  <footer class="text-center py-6 border-t border-blue-500/20 text-gray-400">
+    © 2026 BLUELANTERNDAO — Built for the decentralized future.
+  </footer>  <script>
+    function addPost() {
+      const title = document.getElementById('postTitle').value;
+      const content = document.getElementById('postContent').value;
+      if (!title || !content) return;
+
+      const container = document.getElementById('postContainer');
+      const post = document.createElement('div');
+      post.className = 'bg-gray-800 p-4 rounded-2xl shadow';
+      post.innerHTML = `<h3 class='text-blue-400 font-bold mb-2'>${title}</h3><p>${content}</p>`;
+      container.prepend(post);
+
+      document.getElementById('postTitle').value = '';
+      document.getElementById('postContent').value = '';
+    }
+
+    function sendMessage(e) {
+      e.preventDefault();
+      alert('Message sent! Connect this form to EmailJS or backend later.');
+    }
+  </script></body>
+</html>
