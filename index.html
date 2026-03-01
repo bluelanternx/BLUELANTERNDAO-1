@@ -120,5 +120,12 @@
     }
   </script>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script>
+  window.onload = function () {
+    if (window.twttr) {
+      window.twttr.widgets.load();
+    }
+  };
+  </script>
 </body>
 </html>
